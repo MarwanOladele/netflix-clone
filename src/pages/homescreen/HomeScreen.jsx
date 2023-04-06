@@ -1,12 +1,13 @@
-import Nav from '../../component/navbar/Nav'
-import './HomeScreen.css'
+import "./HomeScreen.css";
+import { Banner, Nav } from "../../component/Index";
 
 const HomeScreen = () => {
   return (
-    <div className='homescreen'>
-        <Nav/>
+    <div className="homescreen">
+      <Nav />
+      <Banner />
     </div>
-  )
-}
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;

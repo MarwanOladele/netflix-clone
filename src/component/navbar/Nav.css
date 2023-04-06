@@ -11,6 +11,7 @@
   justify-content: space-between;
   align-items: center;
   transition: ease-in all 0.5s;
+  z-index: 1;
 }
 
 .nav__logo {
