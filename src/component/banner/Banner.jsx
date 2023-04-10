@@ -20,8 +20,6 @@ const Banner = () => {
     fetchMovie();
   }, []);
 
-  console.log(movie);
-
   const truncate = (sting, n) => {
     return sting?.length > n ? `${sting.substring(0, n)}...` : sting;
   };
