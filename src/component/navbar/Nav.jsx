@@ -18,7 +18,6 @@ const Nav = () => {
       window.removeEventListener("scroll", handleBlackBackground);
     };
   }, []);
-  
 
   return (
     <div className="nav ">
