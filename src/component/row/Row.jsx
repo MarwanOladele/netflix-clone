@@ -51,7 +51,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
         className={`galley_display_arrowLeft ${isLargeRow && "display_Large"}`}
         onClick={() => scroll("left")}
       />
-      
+  
       <MdArrowForwardIos
         className={`galley_display_arrowRight ${isLargeRow && "display_Large"}`}
         onClick={() => scroll("right")}
