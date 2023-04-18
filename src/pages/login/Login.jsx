@@ -5,7 +5,6 @@ import SignUp from "../signup/SignUp";
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(false);
 
-  console.log(isSignIn);
 
   return (
     <div>
