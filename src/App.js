@@ -5,48 +5,46 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/login/Login";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, selectUser } from "./features/userSlice";
+import ProfileScreen from "./pages/profilecsreen/ProfileScreen";
 
 function App() {
-  const user = false;
-  const ProtectedRoutes = ({ children }) => {
-    if (!user) return <Navigate to="/login" />;
-
-    return children;
-  };
+  const user = useSelector(selectUser);
+  console.log(user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (userAuth) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = userAuth.uid;
-        console.log(uid);
-        // ...
+      if (userAuth) {
+        dispatch(
+          login({
+            uid: userAuth.uid,
+            email: userAuth.email,
+          })
+        );
       } else {
-        // User is signed out
-        // ...
+        dispatch(logout());
       }
     });
 
-    return () => {
-      unsub();
-    };
-  }, []);
+    return unsub;
+  }, [dispatch]);
 
+  // const ProtectedRoutes = ({ children }) => {
+  //   if (!user) return <Navigate to="/login" />;
+  //   return children;
+  // };
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          exact
-          element={
-            <ProtectedRoutes>
-              <HomeScreen />
-            </ProtectedRoutes>
-          }
-        />
-        <Route path="login" element={<Login />} />
-      </Routes>
+      {!user ? (
+        <Login />
+      ) : (
+        <Routes>
+          <Route path="/profile" element={<ProfileScreen />} />
+          <Route path="/" element={<HomeScreen />} />
+        </Routes>
+      )}
     </BrowserRouter>
   );
 }

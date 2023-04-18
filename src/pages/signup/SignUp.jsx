@@ -4,8 +4,10 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const signIn = async (e) => {
@@ -17,6 +19,7 @@ const SignUp = () => {
     } catch (error) {
       alert(error);
     }
+    navigate("/");
   };
 
   const register = async (e) => {
