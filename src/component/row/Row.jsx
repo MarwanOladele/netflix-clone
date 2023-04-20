@@ -34,7 +34,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
 
   return (
     <div className="row">
-      <h2>{title}</h2>
+      <h2 className="font-bold text-2xl">{title}</h2>
       <div className="row__posterClass" ref={scrollRef}>
         {movies.map((movie) => (
           <img

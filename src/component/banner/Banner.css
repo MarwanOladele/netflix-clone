@@ -3,6 +3,7 @@
   position: relative;
   color: white;
   object-fit: contain;
+  margin-bottom: 20px;
 }
 
 .banner__content {
